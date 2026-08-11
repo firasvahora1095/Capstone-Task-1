@@ -38,7 +38,7 @@ export default function SignInPage() {
 
   useEffect(() => {
     if (!loading && user) {
-      router.replace('/dashboard')
+      router.replace('/team')
     }
   }, [loading, user, router])
 
@@ -59,7 +59,7 @@ export default function SignInPage() {
       await signInWithEmail(data.email, data.password)
 
       toast.success('Signed in successfully')
-      router.replace('/dashboard')
+      router.replace('/team')
       router.refresh()
     } catch (error: unknown) {
       if (error instanceof Error && error.message.includes('email-not-verified')) {
@@ -78,7 +78,7 @@ export default function SignInPage() {
 
     try {
       await signInWithGoogle()
-      router.replace('/dashboard')
+      router.replace('/team')
     } catch {
       const message = 'Google sign-in failed. Please try again.'
       setAuthError(message)
@@ -92,8 +92,8 @@ export default function SignInPage() {
 
   return (
     <div
-  className={`${inter.className} fixed inset-0 z-50 overflow-y-auto bg-[#1B2559] text-[#1A202C]`}
->
+      className={`${inter.className} fixed inset-0 z-50 overflow-y-auto bg-[#1B2559] text-[#1A202C]`}
+    >
       <div className="grid min-h-full min-[769px]:grid-cols-[380px_1fr] min-[1280px]:grid-cols-2">
         {/* Left hero */}
         <section className="hidden bg-[#131A45] px-12 text-white min-[769px]:flex min-[1280px]:px-16">
@@ -112,9 +112,7 @@ export default function SignInPage() {
         <main className="flex min-h-full items-center justify-center bg-[#1B2559] p-6 min-[769px]:bg-white min-[769px]:p-8">
           <div className="w-full max-w-none rounded-[12px] border border-[#E2E8F0] bg-white p-6 shadow-[0_8px_24px_rgba(16,24,40,0.12)] min-[769px]:max-w-[420px]">
             <div className="mb-6">
-              <h1 className="text-[24px] leading-8 font-semibold text-[#1A202C]">
-                Sign in
-              </h1>
+              <h1 className="text-[24px] leading-8 font-semibold text-[#1A202C]">Sign in</h1>
 
               <p className="mt-1 text-[14px] leading-5 text-[#627288]">
                 Enter your credentials to continue
@@ -128,11 +126,7 @@ export default function SignInPage() {
               disabled={authBusy}
               className="flex h-12 w-full items-center justify-center gap-3 rounded-[8px] border border-[#91949A] bg-white px-4 text-[14px] font-medium text-[#1A202C] transition-colors hover:bg-slate-50 focus-visible:ring-[3px] focus-visible:ring-[#32409A] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <svg
-                className="h-4 w-4"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
+              <svg className="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                   fill="#4285F4"
@@ -150,7 +144,6 @@ export default function SignInPage() {
                   fill="#EA4335"
                 />
               </svg>
-
               Continue with Google
             </button>
 
@@ -193,9 +186,7 @@ export default function SignInPage() {
                   placeholder="you@student.rmit.edu.au"
                   {...register('email')}
                   className={`h-12 w-full rounded-[8px] border bg-white px-3 text-[14px] text-[#1A202C] outline-none placeholder:text-[#627288] focus:ring-2 focus:ring-[#3D4EAE] disabled:cursor-not-allowed disabled:bg-[#F5F7FB] disabled:opacity-60 ${
-                    errors.email
-                      ? 'border-[#C0392B]'
-                      : 'border-[#91949A]'
+                    errors.email ? 'border-[#C0392B]' : 'border-[#91949A]'
                   }`}
                 />
 
@@ -227,15 +218,11 @@ export default function SignInPage() {
                     autoComplete="current-password"
                     disabled={authBusy}
                     aria-invalid={!!errors.password}
-                    aria-describedby={
-                      errors.password ? 'password-error' : undefined
-                    }
+                    aria-describedby={errors.password ? 'password-error' : undefined}
                     placeholder="Enter your password"
                     {...register('password')}
                     className={`h-12 w-full rounded-[8px] border bg-white px-3 pr-16 text-[14px] text-[#1A202C] outline-none placeholder:text-[#627288] focus:ring-2 focus:ring-[#3D4EAE] disabled:cursor-not-allowed disabled:bg-[#F5F7FB] disabled:opacity-60 ${
-                      errors.password
-                        ? 'border-[#C0392B]'
-                        : 'border-[#91949A]'
+                      errors.password ? 'border-[#C0392B]' : 'border-[#91949A]'
                     }`}
                   />
 
@@ -244,9 +231,7 @@ export default function SignInPage() {
                     disabled={authBusy}
                     onClick={() => setShowPassword((current) => !current)}
                     className="absolute top-1/2 right-1 min-h-11 -translate-y-1/2 px-3 text-[12px] font-medium text-[#3D4EAE] focus-visible:ring-2 focus-visible:ring-[#3D4EAE] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
-                    aria-label={
-                      showPassword ? 'Hide password' : 'Show password'
-                    }
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
                     {showPassword ? 'Hide' : 'Show'}
                   </button>
