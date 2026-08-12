@@ -30,8 +30,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Aleeya Ahmad',
     role: 'UX Designer',
-    blurb:
-      'Designs the interface and prototypes each screen before it reaches development.',
+    blurb: 'Designs the interface and prototypes each screen before it reaches development.',
     avatarStyle: 'photo-placeholder',
   },
   {
@@ -45,15 +44,13 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Firas Vahora',
     role: 'Developer 1',
-    blurb:
-      'Builds the front-end pages and connects them to the existing authentication layer.',
+    blurb: 'Builds the front-end pages and connects them to the existing authentication layer.',
     avatarStyle: 'photo-placeholder',
   },
   {
     name: 'Aiden Brundell',
     role: 'Developer 2',
-    blurb:
-      'Works on application logic and data handling, and reviews pull requests before merge.',
+    blurb: 'Works on application logic and data handling, and reviews pull requests before merge.',
     initials: 'AB',
     avatarStyle: 'initials',
   },
@@ -73,14 +70,11 @@ function MemberCard({ member }: { member: TeamMember }) {
           {member.initials}
         </div>
       ) : (
-        <div
-          aria-hidden="true"
-          className="h-20 w-20 shrink-0 rounded-full bg-[#CBD5E1]"
-        />
+        <div aria-hidden="true" className="h-20 w-20 shrink-0 rounded-full bg-[#CBD5E1]" />
       )}
 
       {/* Name */}
-      <h2 className="mt-4 break-words text-[20px] leading-7 font-semibold text-[#1A202C]">
+      <h2 className="mt-4 text-[20px] leading-7 font-semibold break-words text-[#1A202C]">
         {member.name}
       </h2>
 
@@ -120,7 +114,7 @@ export default function TeamPage() {
     >
       <div className="mx-auto w-full max-w-[1440px]">
         <header className="mb-8">
-          <h1 className="break-words text-[32px] leading-10 font-bold text-[#1A202C]">
+          <h1 className="text-[32px] leading-10 font-bold break-words text-[#1A202C]">
             6-IBM-RCS Infrastructure-Team 2
           </h1>
 

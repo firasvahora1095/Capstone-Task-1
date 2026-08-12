@@ -2,13 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import {
-  LayoutDashboard,
-  StickyNote,
-  User,
-  Settings,
-  Users,
-} from 'lucide-react'
+import { LayoutDashboard, StickyNote, User, Settings, Users } from 'lucide-react'
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -24,10 +18,7 @@ export function Sidebar() {
   return (
     <aside className="flex w-[72px] shrink-0 flex-col border-r border-zinc-200 bg-white min-[1024px]:w-60 dark:border-zinc-800 dark:bg-zinc-900">
       <div className="flex h-14 items-center justify-center border-b border-zinc-200 px-3 min-[1024px]:justify-start dark:border-zinc-800">
-        <div
-          aria-hidden="true"
-          className="h-5 w-5 shrink-0 rounded-[6px] bg-[#3D4EAE]"
-        />
+        <div aria-hidden="true" className="h-5 w-5 shrink-0 rounded-[6px] bg-[#3D4EAE]" />
 
         <span className="ml-3 hidden text-sm font-semibold min-[1024px]:inline">
           {process.env.NEXT_PUBLIC_APP_NAME ?? 'App'}

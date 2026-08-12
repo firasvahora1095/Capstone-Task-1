@@ -9,13 +9,9 @@ export function proxy(req: NextRequest) {
 
   const { pathname } = req.nextUrl
 
-  const isProtected = PROTECTED_ROUTES.some((route) =>
-    pathname.startsWith(route)
-  )
+  const isProtected = PROTECTED_ROUTES.some((route) => pathname.startsWith(route))
 
-  const isAuthRoute = AUTH_ROUTES.some((route) =>
-    pathname.startsWith(route)
-  )
+  const isAuthRoute = AUTH_ROUTES.some((route) => pathname.startsWith(route))
 
   // Logged-out user trying to access a protected page
   if (isProtected && !isAuthenticated) {
@@ -42,7 +38,5 @@ export function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|api/|images/).*)',
-  ],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|api/|images/).*)'],
 }
