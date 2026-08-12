@@ -1,32 +1,49 @@
+'use client'
+
 import Link from 'next/link'
-import { LayoutDashboard, StickyNote, User, Settings } from 'lucide-react'
+import { usePathname } from 'next/navigation'
+import { LayoutDashboard, StickyNote, User, Settings, Users } from 'lucide-react'
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/notes', label: 'Notes', icon: StickyNote },
+  { href: '/team', label: 'Team', icon: Users },
   { href: '/profile', label: 'Profile', icon: User },
   { href: '/settings', label: 'Settings', icon: Settings },
 ]
 
 export function Sidebar() {
+  const pathname = usePathname()
+
   return (
-    <aside className="hidden lg:flex w-60 flex-col border-r border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="flex h-14 items-center px-4 border-b border-zinc-200 dark:border-zinc-800">
-        <span className="font-semibold text-sm">
+    <aside className="flex w-[72px] shrink-0 flex-col border-r border-zinc-200 bg-white min-[1024px]:w-60 dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="flex h-14 items-center justify-center border-b border-zinc-200 px-3 min-[1024px]:justify-start dark:border-zinc-800">
+        <div aria-hidden="true" className="h-5 w-5 shrink-0 rounded-[6px] bg-[#3D4EAE]" />
+
+        <span className="ml-3 hidden text-sm font-semibold min-[1024px]:inline">
           {process.env.NEXT_PUBLIC_APP_NAME ?? 'App'}
         </span>
       </div>
-      <nav className="flex-1 p-3 space-y-1">
-        {navItems.map(({ href, label, icon: Icon }) => (
-          <Link
-            key={href}
-            href={href}
-            className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition-colors dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white"
-          >
-            <Icon className="h-4 w-4 shrink-0" />
-            {label}
-          </Link>
-        ))}
+
+      <nav className="flex-1 space-y-1 p-3">
+        {navItems.map(({ href, label, icon: Icon }) => {
+          const active = pathname === href
+
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`flex min-h-11 items-center justify-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors min-[1024px]:justify-start ${
+                active
+                  ? 'bg-[#D6DEFA] text-[#3D4EAE]'
+                  : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white'
+              }`}
+            >
+              <Icon className="h-4 w-4 shrink-0" />
+              <span className="hidden min-[1024px]:inline">{label}</span>
+            </Link>
+          )
+        })}
       </nav>
     </aside>
   )
