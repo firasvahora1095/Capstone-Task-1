@@ -21,7 +21,7 @@ export function Sidebar() {
         <div aria-hidden="true" className="h-5 w-5 shrink-0 rounded-[6px] bg-[#3D4EAE]" />
 
         <span className="ml-3 hidden text-sm font-semibold min-[1024px]:inline">
-          {process.env.NEXT_PUBLIC_APP_NAME ?? 'App'}
+          Group 6
         </span>
       </div>
 
