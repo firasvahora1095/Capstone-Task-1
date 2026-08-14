@@ -12,8 +12,6 @@ const securityHeaders = [
 ]
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ['firebase-admin'],
-  
   async headers() {
     return [
       {
