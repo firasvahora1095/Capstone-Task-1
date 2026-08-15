@@ -30,6 +30,8 @@ Screenshot: docs/tests/screenshots/01BlurbTextWrapping.png
 
 Notes: This does not break the page, but it is unexpected behaviour
 
+RESOLUTION: fixed in [ee2801f](https://github.com/firasvahora1095/Capstone-Task-1/commit/ee2801f8ed39d0cd91c00adff55ef4f1cde5ad07)
+
 ## Report
 The website was manually tested on a locally deployed server. Authentication, missing image fallback, text wrapping/resizing and different viewport resolutions were tested. The website did not pass Test 04 (see Bug 01), as expanding the blurb expanded every horizontally neighboring blurb (See Bug 01). 
 All other tests passed successfully.
