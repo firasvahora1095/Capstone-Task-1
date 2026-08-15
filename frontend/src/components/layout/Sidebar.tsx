@@ -2,11 +2,10 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, StickyNote, User, Settings, Users } from 'lucide-react'
+import { LayoutDashboard, User, Settings, Users } from 'lucide-react'
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/notes', label: 'Notes', icon: StickyNote },
   { href: '/team', label: 'Team', icon: Users },
   { href: '/profile', label: 'Profile', icon: User },
   { href: '/settings', label: 'Settings', icon: Settings },
@@ -20,9 +19,7 @@ export function Sidebar() {
       <div className="flex h-14 items-center justify-center border-b border-zinc-200 px-3 min-[1024px]:justify-start dark:border-zinc-800">
         <div aria-hidden="true" className="h-5 w-5 shrink-0 rounded-[6px] bg-[#3D4EAE]" />
 
-        <span className="ml-3 hidden text-sm font-semibold min-[1024px]:inline">
-          {process.env.NEXT_PUBLIC_APP_NAME ?? 'App'}
-        </span>
+        <span className="ml-3 hidden text-sm font-semibold min-[1024px]:inline">Group 6</span>
       </div>
 
       <nav className="flex-1 space-y-1 p-3">

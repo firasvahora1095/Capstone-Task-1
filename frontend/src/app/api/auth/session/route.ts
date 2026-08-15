@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server'
-import { adminAuth } from '@/lib/firebase/admin'
+import { adminAuth } from '@/lib/firebase/admin-auth'
 import { cookies } from 'next/headers'
 
 const SESSION_COOKIE_NAME = '__session'
