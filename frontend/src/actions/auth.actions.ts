@@ -1,6 +1,6 @@
 'use server'
 
-import { adminAuth } from '@/lib/firebase/admin'
+import { adminAuth } from '@/lib/firebase/admin-auth'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import type { ActionResult } from '@/types'

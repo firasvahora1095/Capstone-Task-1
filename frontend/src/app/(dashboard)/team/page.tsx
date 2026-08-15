@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 import { Inter } from 'next/font/google'
 
 import { useState } from 'react'
@@ -14,7 +16,8 @@ type TeamMember = {
   role: string
   blurb: string
   initials?: string
-  avatarStyle: 'photo-placeholder' | 'initials'
+  imageSrc?: string
+  avatarStyle: 'photo-placeholder' | 'initials' | 'photo'
   expandable?: boolean
 }
 
@@ -24,14 +27,16 @@ const teamMembers: TeamMember[] = [
     role: 'Project Manager',
     blurb:
       'Keeps the team aligned on scope and delivery dates, runs our weekly sprint check-ins, and owns the risk register. Previously coordinated a semester-long industry project and is focused on making sure every requirement in this sprint is traceable from the brief through to the built page.',
-    avatarStyle: 'photo-placeholder',
+    initials: 'HB',
+    avatarStyle: 'initials',
     expandable: true,
   },
   {
     name: 'Aleeya Ahmad',
     role: 'UX Designer',
     blurb: 'Designs the interface and prototypes each screen before it reaches development.',
-    avatarStyle: 'photo-placeholder',
+    initials: 'AA',
+    avatarStyle: 'initials',
   },
   {
     name: 'Janataarah Begum',
@@ -45,14 +50,15 @@ const teamMembers: TeamMember[] = [
     name: 'Firas Vahora',
     role: 'Developer 1',
     blurb: 'Builds the front-end pages and connects them to the existing authentication layer.',
-    avatarStyle: 'photo-placeholder',
+    initials: 'FV',
+    avatarStyle: 'initials',
   },
   {
     name: 'Aiden Brundell',
     role: 'Developer 2',
     blurb: 'Works on application logic and data handling, and reviews pull requests before merge.',
-    initials: 'AB',
-    avatarStyle: 'initials',
+    imageSrc: '/images/aiden.jpg',
+    avatarStyle: 'photo',
   },
 ]
 
@@ -60,9 +66,17 @@ function MemberCard({ member }: { member: TeamMember }) {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <article className="flex h-full min-w-0 flex-col rounded-[12px] border border-[#E2E8F0] bg-white p-6 shadow-[0_1px_3px_rgba(16,24,40,0.08)] max-[767px]:p-4">
+    <article className="flex min-w-0 flex-col rounded-[12px] border border-[#E2E8F0] bg-white p-6 shadow-[0_1px_3px_rgba(16,24,40,0.08)] max-[767px]:p-4">
       {/* Avatar */}
-      {member.avatarStyle === 'initials' ? (
+      {member.avatarStyle === 'photo' && member.imageSrc ? (
+        <Image
+          src={member.imageSrc}
+          alt={`${member.name} profile photo`}
+          width={80}
+          height={80}
+          className="h-20 w-20 shrink-0 rounded-full object-cover"
+        />
+      ) : member.avatarStyle === 'initials' ? (
         <div
           aria-hidden="true"
           className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-[#D6DEFA] text-[16px] font-medium text-[#3D4EAE]"
@@ -70,7 +84,10 @@ function MemberCard({ member }: { member: TeamMember }) {
           {member.initials}
         </div>
       ) : (
-        <div aria-hidden="true" className="h-20 w-20 shrink-0 rounded-full bg-[#CBD5E1]" />
+        <div
+          aria-hidden="true"
+          className="h-20 w-20 shrink-0 rounded-full bg-[#CBD5E1]"
+        />
       )}
 
       {/* Name */}
@@ -125,7 +142,7 @@ export default function TeamPage() {
 
         <section
           aria-label="Team members"
-          className="grid grid-cols-1 items-stretch gap-6 min-[768px]:grid-cols-2 min-[1024px]:grid-cols-3 min-[1280px]:grid-cols-4"
+          className="grid grid-cols-1 items-start gap-6 min-[768px]:grid-cols-2 min-[1024px]:grid-cols-3 min-[1280px]:grid-cols-4"
         >
           {teamMembers.map((member) => (
             <MemberCard key={member.name} member={member} />
